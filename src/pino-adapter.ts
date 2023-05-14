@@ -1,26 +1,21 @@
-import { LogFn, LogLevel } from '@chubbyts/chubbyts-log-types/dist/log';
-import { Logger, Level } from 'pino';
+import type { LogFn } from '@chubbyts/chubbyts-log-types/dist/log';
+import { LogLevel } from '@chubbyts/chubbyts-log-types/dist/log';
+import type { Logger } from 'pino';
 
 export const createPinoAdapter = (pino: Logger): LogFn => {
   return (level: LogLevel, message: string, context: Record<string, unknown>): void => {
-    let pinoLevel: Level = 'fatal';
-
     switch (level) {
       case LogLevel.DEBUG:
-        pinoLevel = 'debug';
-        break;
+        return pino.debug(context, message);
       case LogLevel.INFO:
-        pinoLevel = 'info';
-        break;
+        return pino.info(context, message);
       case LogLevel.NOTICE:
       case LogLevel.WARNING:
-        pinoLevel = 'warn';
-        break;
+        return pino.warn(context, message);
       case LogLevel.ERROR:
-        pinoLevel = 'error';
-        break;
+        return pino.error(context, message);
     }
 
-    pino[pinoLevel](context, message);
+    return pino.fatal(context, message);
   };
 };

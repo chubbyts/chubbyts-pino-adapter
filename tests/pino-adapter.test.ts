@@ -1,7 +1,8 @@
 import { describe, expect, test } from '@jest/globals';
-import { createPinoAdapter } from '../src/pino-adapter';
-import { Logger } from 'pino';
+import type { Logger } from 'pino';
 import { LogLevel } from '@chubbyts/chubbyts-log-types/dist/log';
+import { useObjectMock } from '@chubbyts/chubbyts-function-mock/dist/object-mock';
+import { createPinoAdapter } from '../src/pino-adapter';
 
 describe('createPinoAdapter', () => {
   [
@@ -18,20 +19,17 @@ describe('createPinoAdapter', () => {
       const context = { key: 'value' };
       const message = 'message';
 
-      const logFn = jest.fn((givenContext: Record<string, unknown>, givenMessage: string) => {
-        expect(givenContext).toBe(context);
-        expect(givenMessage).toBe(message);
-      });
-
-      const pino = {
-        [pinoLevel]: logFn,
-      } as unknown as Logger;
+      const [pino, pinoMocks] = useObjectMock<Logger>([
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        { name: pinoLevel, parameters: [context, message], return: undefined },
+      ]);
 
       const pinoAdapter = createPinoAdapter(pino);
 
       pinoAdapter(level, message, context);
 
-      expect(logFn).toHaveBeenCalledTimes(1);
+      expect(pinoMocks.length).toBe(0);
     });
   });
 });
