@@ -36,7 +36,7 @@ npm i @chubbyts/chubbyts-pino-adapter@^1.3.1
 
 ## Copyright
 
-2023 Dominik Zogg
+2024 Dominik Zogg
 
 [1]: https://www.npmjs.com/package/@chubbyts/chubbyts-pino-adapter
 [2]: https://www.php-fig.org/psr/PSR-3
