@@ -1,7 +1,7 @@
 {
   "name": "@chubbyts/chubbyts-pino-adapter",
   "type": "module",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "description": "Pino adapter for chubbyts-log-types, PSR-3 inspired.",
   "keywords": [
     "chubbyts",
@@ -46,7 +46,7 @@
   },
   "dependencies": {
     "@chubbyts/chubbyts-log-types": "^1.3.2",
-    "pino": "^8.14.1"
+    "pino": "^8.14.1 || ^9.0.0"
   },
   "devDependencies": {
     "@chubbyts/chubbyts-eslint": "^2.0.3",
