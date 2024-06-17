@@ -1,4 +1,4 @@
-import { describe, expect, test } from '@jest/globals';
+import { describe, expect, test } from 'vitest';
 import type { Logger } from 'pino';
 import { LogLevel } from '@chubbyts/chubbyts-log-types/dist/log';
 import { useObjectMock } from '@chubbyts/chubbyts-function-mock/dist/object-mock';
