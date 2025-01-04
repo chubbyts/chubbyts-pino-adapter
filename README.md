@@ -23,15 +23,15 @@ Pino adapter for chubbyts-log-types, [PSR-3][2] inspired.
 ## Requirements
 
  * node: 18
- * [@chubbyts/chubbyts-log-types][3]: ^1.4.1
- * [pino][4]: ^9.2.0
+ * [@chubbyts/chubbyts-log-types][3]: ^1.4.3
+ * [pino][4]: ^9.6.0
 
 ## Installation
 
 Through [NPM](https://www.npmjs.com) as [@chubbyts/chubbyts-pino-adapter][1].
 
 ```ts
-npm i @chubbyts/chubbyts-pino-adapter@^1.4.0
+npm i @chubbyts/chubbyts-pino-adapter@^1.4.1
 ```
 
 ## Copyright
