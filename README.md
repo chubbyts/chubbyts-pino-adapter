@@ -31,7 +31,7 @@ Pino adapter for chubbyts-log-types, [PSR-3][2] inspired.
 Through [NPM](https://www.npmjs.com) as [@chubbyts/chubbyts-pino-adapter][1].
 
 ```ts
-npm i @chubbyts/chubbyts-pino-adapter@^3.0.0
+npm i @chubbyts/chubbyts-pino-adapter@^3.0.1
 ```
 
 ## Copyright
