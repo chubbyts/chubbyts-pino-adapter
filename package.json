@@ -1,7 +1,7 @@
 {
   "name": "@chubbyts/chubbyts-pino-adapter",
   "type": "module",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Pino adapter for chubbyts-log-types, PSR-3 inspired.",
   "keywords": [
     "chubbyts",
@@ -45,18 +45,18 @@
   },
   "dependencies": {
     "@chubbyts/chubbyts-log-types": "^3.0.1",
-    "pino": "^9.9.5"
+    "pino": "^10.1.0"
   },
   "devDependencies": {
-    "@chubbyts/chubbyts-eslint": "^4.0.7",
+    "@chubbyts/chubbyts-eslint": "^4.0.10",
     "@chubbyts/chubbyts-function-mock": "^2.0.2",
-    "@stryker-mutator/core": "^9.1.1",
-    "@stryker-mutator/vitest-runner": "^9.1.1",
-    "@types/node": "^24.3.1",
-    "@vitest/coverage-v8": "^3.2.4",
+    "@stryker-mutator/core": "^9.3.0",
+    "@stryker-mutator/vitest-runner": "^9.3.0",
+    "@types/node": "^24.10.0",
+    "@vitest/coverage-v8": "^4.0.8",
     "prettier": "^3.6.2",
-    "typescript": "^5.9.2",
-    "vitest": "^3.2.4"
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.8"
   },
   "publishConfig": {
     "access": "public"
