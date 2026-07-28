@@ -31,7 +31,7 @@ describe('createPinoAdapter', () => {
 
       pinoAdapter(level, message, context);
 
-      expect(pinoMocks.length).toBe(0);
+      expect(pinoMocks).toHaveLength(0);
     });
   });
 });
