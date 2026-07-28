@@ -1,7 +1,7 @@
 {
   "name": "@chubbyts/chubbyts-pino-adapter",
   "type": "module",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "description": "Pino adapter for chubbyts-log-types, PSR-3 inspired.",
   "keywords": [
     "chubbyts",
