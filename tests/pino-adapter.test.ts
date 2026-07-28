@@ -22,7 +22,7 @@ describe('createPinoAdapter', () => {
       const message = 'message';
 
       const [pino, pinoMocks] = useObjectMock<Logger>([
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // oxlint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         { name: pinoLevel, parameters: [context, message], return: undefined },
       ]);
