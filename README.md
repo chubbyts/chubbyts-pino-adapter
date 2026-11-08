@@ -16,13 +16,27 @@
 [![security_rating](https://sonarcloud.io/api/project_badges/measure?project=chubbyts_chubbyts-pino-adapter&metric=security_rating)](https://sonarcloud.io/dashboard?id=chubbyts_chubbyts-pino-adapter)
 [![sqale_index](https://sonarcloud.io/api/project_badges/measure?project=chubbyts_chubbyts-pino-adapter&metric=sqale_index)](https://sonarcloud.io/dashboard?id=chubbyts_chubbyts-pino-adapter)
 [![vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=chubbyts_chubbyts-pino-adapter&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=chubbyts_chubbyts-pino-adapter)
+
 ## Description
 
-Pino adapter for chubbyts-log-types, [PSR-3][2] inspired.
+[Pino][4] adapter for [@chubbyts/chubbyts-log-types][3], [PSR-3][2] inspired.
+
+`createPinoAdapter` turns a pino `Logger` into a `LogFn`, so you can use pino behind the `Logger` from
+`@chubbyts/chubbyts-log-types`. It maps the eight PSR-3 log levels to pino's levels.
+
+### Why use it
+
+ * **Decoupled**: your code depends on the small `Logger` / `LogFn` types, not on pino, so you can swap the logger
+   implementation without touching it.
+ * **Full PSR-3 level set**: `emergency`, `alert`, `critical`, `error`, `warning`, `notice`, `info` and `debug` are all
+   supported, even though pino has fewer levels.
+ * **Structured logging**: the context object is passed to pino as merge object, so its keys end up as fields in the
+   JSON log line.
+ * **Tiny**: a single function. You configure pino yourself (transports, redaction, serializers, …).
 
 ## Requirements
 
- * node: 22
+ * node: >= 22
  * [@chubbyts/chubbyts-log-types][3]: ^3.4.0
  * [pino][4]: ^10.4.0
 
@@ -30,9 +44,47 @@ Pino adapter for chubbyts-log-types, [PSR-3][2] inspired.
 
 Through [NPM](https://www.npmjs.com) as [@chubbyts/chubbyts-pino-adapter][1].
 
-```ts
-npm i @chubbyts/chubbyts-pino-adapter@^3.4.0
+```sh
+npm i @chubbyts/chubbyts-pino-adapter@^3.4.1
 ```
+
+## Usage
+
+```ts
+import { pino } from 'pino';
+import { createLogger } from '@chubbyts/chubbyts-log-types/log';
+import { createPinoAdapter } from '@chubbyts/chubbyts-pino-adapter/pino-adapter';
+
+const logger = createLogger(createPinoAdapter(pino({ level: 'debug' })));
+
+logger.info('User logged in', { userId: 'b1c3e5f7' });
+// {"level":30,"time":...,"pid":...,"hostname":"...","userId":"b1c3e5f7","msg":"User logged in"}
+```
+
+You can also call the `LogFn` directly:
+
+```ts
+const log = createPinoAdapter(pino());
+
+log('warning', 'Disk space low', { free: '512MB' });
+```
+
+## Level mapping
+
+| PSR-3 level | pino level |
+| ----------- | ---------- |
+| `emergency` | `fatal`    |
+| `alert`     | `fatal`    |
+| `critical`  | `fatal`    |
+| `error`     | `error`    |
+| `warning`   | `warn`     |
+| `notice`    | `warn`     |
+| `info`      | `info`     |
+| `debug`     | `debug`    |
+
+ * pino's default minimum level is `info`, so `debug` messages are only written if you create pino with
+   `level: 'debug'` (or lower).
+ * pino's `trace` level is not used.
 
 ## Copyright
 
