@@ -1,4 +1,4 @@
-import type { LogFn, LogLevel } from '@chubbyts/chubbyts-log-types/dist/log';
+import type { LogFn, LogLevel } from '@chubbyts/chubbyts-log-types/log';
 import type { Logger } from 'pino';
 
 export const createPinoAdapter = (pino: Logger): LogFn => {

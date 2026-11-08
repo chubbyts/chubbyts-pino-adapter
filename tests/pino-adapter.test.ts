@@ -1,7 +1,7 @@
 import { describe, expect, test } from 'vitest';
 import type { Logger } from 'pino';
-import type { LogLevel } from '@chubbyts/chubbyts-log-types/dist/log';
-import { useObjectMock } from '@chubbyts/chubbyts-function-mock/dist/object-mock';
+import type { LogLevel } from '@chubbyts/chubbyts-log-types/log';
+import { useObjectMock } from '@chubbyts/chubbyts-function-mock/object-mock';
 import { createPinoAdapter } from '../src/pino-adapter.js';
 
 describe('createPinoAdapter', () => {

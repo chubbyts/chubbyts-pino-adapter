@@ -1,5 +1,8 @@
 allowBuilds:
   unrs-resolver: true
+minimumReleaseAgeExclude:
+  - '@chubbyts/chubbyts-function-mock@2.4.0'
+  - '@chubbyts/chubbyts-log-types@3.4.0'
 packageExtensions:
   '@stryker-mutator/core':
     dependencies:
